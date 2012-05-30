@@ -15,27 +15,73 @@ public abstract class Produto
     private final double PBCamiao = 12;
  
     
+    private String nome;
+    private Cargas cargas;
+    
     /**
      * Constructor for objects of class ProdutosComerciais
      */
     public Produto()
     {
-        // initialise instance variables
-        x = 0;
+        this.nome = "";
+        this.cargas = new Cargas();
     }
-
-    /**
-     * An example of a method - replace this comment with your own
-     * 
-     * @param  y   a sample parameter for a method
-     * @return     the sum of x and y 
-     */
-    public int sampleMethod(int y)
+    
+    public Produto(String nome)
     {
-        // put your code here
-        return x + y;
+        this.nome = nome;
+        this.cargas = new Cargas();        
+    }
+    
+    public Produto(String nome,Cargas cargas)
+    {
+        this.nome = nome;
+        this.cargas = cargas.clone();
+    }    
+    
+    public Produto(Produto p)
+    {
+        this.nome = p.getNome();
+        this.cargas = p.getCargas();
+    }
+    
+    public String getNome(){return this.nome;}
+    
+    public void setNome(String nome){this.nome = nome;}
+    
+    public abstract boolean addCarga(Carga c);
+    
+    public Cargas getCargas(){
+        return new Cargas(this.cargas);
     }
     
     public abstract double getCustoProduto();
+    
+    /*
+     * Métodos da praxe
+     */
     public abstract Produto clone();
+    
+        public boolean equals(Object o) {
+        if (this == o) {
+            return true;
+        }
+        if (o == null || o.getClass() != this.getClass()) {
+            return false;
+        }
+        Produto prod = (Produto) o;
+        if ((this.nome.equals(prod.getNome())) && (this.cargas.equals(prod.getCargas()))) {
+            return true;
+        } else {
+            return false;
+        }
+    }
+    
+    public String toString()
+    {
+        StringBuilder sb = new StringBuilder("Produto:\n");
+        sb.append("Nome: ").append(this.getNome()).append("\n");
+        
+        return sb.toString();
+    }
 }
