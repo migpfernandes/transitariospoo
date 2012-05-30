@@ -13,8 +13,7 @@ public abstract class Produto
     private final double PBVan = 12;
     private final double PBFurgao = 12;
     private final double PBCamiao = 12;
- 
-    
+
     private String nome;
     private Cargas cargas;
     
