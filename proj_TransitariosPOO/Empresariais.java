@@ -9,8 +9,6 @@ package proj_TransitariosPOO;
  */
 public class Empresariais extends Cliente
 {
-    // instance variables - replace the example below with your own
-    private int x;
 
     /**
      * Constructor for objects of class Empresariais
