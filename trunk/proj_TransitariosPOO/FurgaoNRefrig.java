@@ -18,10 +18,19 @@ public class FurgaoNRefrig extends Furgao
     public FurgaoNRefrig()
     {
         // initialise instance variables
-
+    }
+    
+    public FurgaoNRefrig(FurgaoNRefrig f){
+        super(f);
     }
 
+    public FurgaoNRefrig clone(){
+        return new FurgaoNRefrig(this);
+    }
     
+    public String toString(){
+        return super.toString();
+    }
     
     //Metodos da praxe
     public boolean equals(Object furgao){

@@ -50,7 +50,10 @@ public class Furgao extends Veiculo
     }
     
     public String toString(){
-        return super.toString();
+        StringBuilder sb = new StringBuilder();
+        sb.append(super.toString());
+        sb.append("TipoCombustivel: ").append(this.tipoCombustivel).append("\n");
+        return sb.toString();
     }
     
     public Furgao clone(){

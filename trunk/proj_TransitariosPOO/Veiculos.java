@@ -116,7 +116,10 @@ public class Veiculos
      */
     public Veiculo getVeiculo(String matricula)
     {
-        return (this.veiculos.get(matricula));
+        if (this.veiculos.containsKey(matricula)){
+            return this.veiculos.get(matricula).clone();
+        }
+        return null;
     }
 
 
