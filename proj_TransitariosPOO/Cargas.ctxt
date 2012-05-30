@@ -1,0 +1,21 @@
+#BlueJ class context
+comment0.params=
+comment0.target=Cargas()
+comment0.text=\n\ Constructor\ for\ objects\ of\ class\ Cargas\n
+comment1.params=c
+comment1.target=Cargas(Cargas)
+comment2.params=
+comment2.target=java.util.HashMap\ getCargas()
+comment3.params=
+comment3.target=java.util.Iterator\ getCargasIterator()
+comment4.params=c
+comment4.target=void\ addCarga(Carga)
+comment5.params=codigo
+comment5.target=Carga\ getCarga(java.lang.String)
+comment6.params=cargas
+comment6.target=boolean\ equals(java.lang.Object)
+comment7.params=
+comment7.target=Cargas\ clone()
+comment8.params=
+comment8.target=java.lang.String\ toString()
+numComments=9
