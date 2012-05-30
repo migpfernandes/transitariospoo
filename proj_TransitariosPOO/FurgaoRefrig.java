@@ -20,8 +20,17 @@ public class FurgaoRefrig extends Furgao implements iRefrigeravel
         
     }
     
+    public FurgaoRefrig(FurgaoRefrig f){
+        super(f);
+    }
+
+    public FurgaoRefrig clone(){
+        return new FurgaoRefrig(this);
+    }
     
-    
+    public String toString(){
+        return super.toString();
+    }
     
     //Metodos da praxe
     public boolean equals(Object furgao){

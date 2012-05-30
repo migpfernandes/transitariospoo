@@ -19,6 +19,7 @@ public abstract class Veiculo
     private boolean emViagem;
     private TreeSet <Carga> cargas;
     
+    
     private final double TAXAPARTIDA = 60;
 
     public Veiculo(){
