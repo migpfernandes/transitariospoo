@@ -1,0 +1,7 @@
+#BlueJ class context
+comment0.params=
+comment0.target=void\ saveDB()
+comment0.text=\n\ Metodos\ de\ leitura\ e\ escrita\ da\ base\ de\ dados\n
+comment1.params=filename
+comment1.target=TransitariosPooSistema\ loadDB(java.lang.String)
+numComments=2

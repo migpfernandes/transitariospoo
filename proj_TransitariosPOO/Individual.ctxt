@@ -1,0 +1,16 @@
+#BlueJ class context
+comment0.params=
+comment0.target=Individual()
+comment0.text=\n\ Constructor\ for\ objects\ of\ class\ Individual\n
+comment1.params=nome\ morada\ numContribuinte
+comment1.target=Individual(java.lang.String,\ java.lang.String,\ java.lang.String)
+comment2.params=cliente
+comment2.target=Individual(Individual)
+comment3.params=
+comment3.target=Individual\ clone()
+comment3.text=\n\ M\u00E9todos\ da\ praxe\n
+comment4.params=
+comment4.target=java.lang.String\ toString()
+comment5.params=ind
+comment5.target=boolean\ equals(java.lang.Object)
+numComments=6

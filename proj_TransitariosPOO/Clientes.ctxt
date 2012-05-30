@@ -1,0 +1,25 @@
+#BlueJ class context
+comment0.params=
+comment0.target=Clientes()
+comment0.text=\n\ Constructor\ for\ objects\ of\ class\ Clientes\n
+comment1.params=clientes
+comment1.target=Clientes(Clientes)
+comment2.params=
+comment2.target=java.util.Iterator\ getClientes()
+comment2.text=\n\ An\ example\ of\ a\ method\ -\ replace\ this\ comment\ with\ your\ own\n\ \n\ @param\ \ y\ \ \ a\ sample\ parameter\ for\ a\ method\n\ @return\ \ \ \ \ the\ sum\ of\ x\ and\ y\ \n
+comment3.params=c
+comment3.target=boolean\ addCliente(Cliente)
+comment4.params=c
+comment4.target=boolean\ removeCliente(Cliente)
+comment5.params=nome
+comment5.target=boolean\ removeCliente(java.lang.String)
+comment6.params=nome
+comment6.target=Cliente\ getCliente(java.lang.String)
+comment6.text=\n\ M\u00E9todos\ de\ procura\n
+comment7.params=clientes
+comment7.target=boolean\ equals(java.lang.Object)
+comment8.params=
+comment8.target=Clientes\ clone()
+comment9.params=
+comment9.target=java.lang.String\ toString()
+numComments=10
