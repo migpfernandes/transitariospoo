@@ -1,0 +1,16 @@
+#BlueJ class context
+comment0.params=
+comment0.target=Empresariais()
+comment0.text=\n\ Constructor\ for\ objects\ of\ class\ Empresariais\n
+comment1.params=nome\ morada\ numContribuinte
+comment1.target=Empresariais(java.lang.String,\ java.lang.String,\ java.lang.String)
+comment2.params=cliente
+comment2.target=Empresariais(Empresariais)
+comment3.params=
+comment3.target=Empresariais\ clone()
+comment3.text=\n\ M\u00E9todos\ de\ praxe\n
+comment4.params=
+comment4.target=java.lang.String\ toString()
+comment5.params=emp
+comment5.target=boolean\ equals(java.lang.Object)
+numComments=6

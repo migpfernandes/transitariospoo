@@ -1,0 +1,23 @@
+#BlueJ class context
+comment0.params=
+comment0.target=Furgao()
+comment0.text=\n\ Constructor\ for\ objects\ of\ class\ Furgao\n
+comment1.params=marca\ modelo\ matricula\ combustivel\ capacidade\ precoKm
+comment1.target=Furgao(java.lang.String,\ java.lang.String,\ java.lang.String,\ java.lang.String,\ double,\ double)
+comment2.params=furgao
+comment2.target=Furgao(Furgao)
+comment3.params=
+comment3.target=java.lang.String\ getTipoCombustivel()
+comment3.text=\n\ Gets\n
+comment4.params=tipoCombustivel
+comment4.target=void\ setTipoCombustivel(java.lang.String)
+comment4.text=\n\ Sets\n
+comment5.params=
+comment5.target=double\ getAutonomiaKm()
+comment6.params=
+comment6.target=java.lang.String\ toString()
+comment7.params=
+comment7.target=Furgao\ clone()
+comment8.params=furgao
+comment8.target=boolean\ equals(java.lang.Object)
+numComments=9
