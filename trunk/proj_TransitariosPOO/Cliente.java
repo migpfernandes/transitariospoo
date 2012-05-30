@@ -15,7 +15,7 @@ public abstract class Cliente
     private String nome;
     private String morada;
     private String numContribuinte;
-    private ArrayList<Produto> produtos;
+    private Produtos produtos;
     
 
     /**

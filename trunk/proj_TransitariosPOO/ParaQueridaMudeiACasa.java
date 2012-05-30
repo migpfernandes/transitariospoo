@@ -10,7 +10,8 @@ package proj_TransitariosPOO;
 public class ParaQueridaMudeiACasa extends Produto
 {
     // instance variables - replace the example below with your own
-    private int x;
+    private final int numCargas = 10;
+    private Cargas
 
     /**
      * Constructor for objects of class ParaQueridaMudeiACasa
