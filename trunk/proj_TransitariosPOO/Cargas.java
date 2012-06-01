@@ -42,8 +42,13 @@ public class Cargas
         return res.iterator();
     }    
     
-    public void addCarga(Carga c){
-        this.cargas.put(c.getCodigo(),c.clone());
+    public boolean addCarga(Carga c){
+        if (this.getCargas().containsValue(c))
+            return false;
+        else{
+            this.cargas.put(c.getCodigo(),c.clone());
+            return true;
+        }
     }
 
     
