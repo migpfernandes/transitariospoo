@@ -10,9 +10,10 @@ package proj_TransitariosPOO;
 public class ParaQueridaMudeiACasa extends Produto
 {
     // instance variables - replace the example below with your own
+    private final double desconto = 0.1;
     private final int numCargas = 10;
-    private Cargas
 
+    
     /**
      * Constructor for objects of class ParaQueridaMudeiACasa
      */
@@ -28,9 +29,7 @@ public class ParaQueridaMudeiACasa extends Produto
      * @param  y   a sample parameter for a method
      * @return     the sum of x and y 
      */
-    public int sampleMethod(int y)
-    {
-        // put your code here
-        return x + y;
+    public getCustoCamiao(){
+        
     }
 }

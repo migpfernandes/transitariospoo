@@ -26,12 +26,31 @@ public class TransitariosPooSistema implements Serializable
     // instance variables - replace the example below with your own
     private static String ficheiroBD = "TransitariosPoo.dbase";
     
-    private Set<Cliente> clientes;
-    private Map<String, Carga> cargas;
+    private String nomeEmpresa;
+    private Clientes clientes;
+    private Veiculos veiculos;
+    
+    
+    public TransitariosPooSistema(){
+        this.nomeEmpresa = "";
+        this.clientes = new Clientes();
+        this.veiculos = new Veiculos();        
+    }    
 
-   
+    public TransitariosPooSistema(String nome,Clientes clientes,Veiculos veiculos){
+        this.nomeEmpresa = nome;
+        this.clientes = new Clientes(clientes);
+        this.veiculos = new Veiculos(veiculos);           
+    }    
     
+    public TransitariosPooSistema(TransitariosPooSistema tspoo){
+        this.nomeEmpresa = tspoo.getNome();
+        this.clientes = tspoo.getClientes();
+        this.veiculos = tspoo.getVeiculos();        
+    }    
     
+    public void setNome(String nome){this.nomeEmpresa = nome;}
+    public String getNome(){return this.nomeEmpresa;}    
     
     /*
      * Metodos de leitura e escrita da base de dados
@@ -70,5 +89,32 @@ public class TransitariosPooSistema implements Serializable
             System.out.println("ERRO (load DB): " + ex.getMessage());
             return null;
         }
+    }
+    
+    /*
+     * Métodos da praxe
+     */
+    public TransitariosPooSistema clone(){
+        return new TransitariosPooSistema(this);
+    }
+    
+    public boolean equals(Object tspoo){
+         if (this == tspoo)
+            return true;
+            
+        if ((tspoo == null) || (this.getClass() != tspoo.getClass()))
+            return false;
+        else{
+            TransitariosPooSistema t = (TransitariosPooSistema) tspoo;
+            return (this.clientes.equals(tspoo.getClientes()) && (this.veiculos.equals(tspoo.getVeiculos())
+        }
+    }  
+    
+    public String toString(){
+        StringBuilder sb = new StringBuilder("EMPRESA: ");
+        sb.append(this.nomeEmpresa).append("\n");
+        sb.append(this.clientes.toString());
+        sb.append(this.veiculos.toString());        
+        return sb.toString();
     }
 }

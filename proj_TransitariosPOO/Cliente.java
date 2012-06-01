@@ -26,7 +26,7 @@ public abstract class Cliente
         this.nome = "";
         this.morada = "";
         this.numContribuinte = "";
-        this.produtos = new ArrayList<Produto>();
+        this.produtos = new Produtos();
     }
 
     
@@ -35,7 +35,7 @@ public abstract class Cliente
         this.nome = nome;
         this.morada = morada;
         this.numContribuinte = numContribuinte;
-        this.produtos = new ArrayList<Produto>();        
+        this.produtos = new Produtos();        
     }    
    
     public Cliente(Cliente cliente)
@@ -43,12 +43,12 @@ public abstract class Cliente
         this.nome = cliente.getNome();
         this.morada = cliente.getMorada();        
         this.numContribuinte = cliente.getNumContribuinte();   
-        this.produtos = new ArrayList<Produto>();
+        this.produtos = new Produtos();
         
         Iterator <Produto> itr = cliente.getProdutos(); 
         while(itr.hasNext()) {            
             Produto prd = itr.next(); 
-            this.produtos.add(prd.clone());
+            this.produtos.addProduto(prd.clone());
         } 
     }
     
@@ -59,10 +59,7 @@ public abstract class Cliente
     public String getMorada(){return this.morada;}
     public String getNumContribuinte(){return this.numContribuinte;}
     public Iterator<Produto> getProdutos(){
-        TreeSet <Produto> res = new TreeSet<Produto>();
-        for (Produto p : this.produtos)
-            res.add(p.clone());
-        return res.iterator();
+        return this.produtos.getProdutos();
     };
   
     /*
@@ -76,7 +73,13 @@ public abstract class Cliente
     /*
      * Métodos de adição, remoção, procura e listagem de produtos
      */
+    public void addProduto(Produto p){
+        this.produtos.addProduto(p.clone());
+    }
     
+    public double getValorSubcontratado(){
+        return this.produtos.getCustoTotal();
+    }
     
     //Metodos da praxe
     public boolean equals(Object cliente){

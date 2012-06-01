@@ -77,7 +77,7 @@ public class Produtos
         while ((it.hasNext()) && (res == null)){
             Produto p = it.next();
             if (p.getNome().equals(nome))
-                res = c.clone();
+                res = p.clone();
             }        
         return res;
     } 
@@ -89,6 +89,16 @@ public class Produtos
             res.add(p.clone());
         return res.iterator();
     }    
+    
+    
+    public double getCustoTotal(){
+        double res = 0;
+        Iterator <Produto> it = this.getProdutos();
+        while (it.hasNext()){
+            res += ((Produto) it.next()).getCustoProduto();
+        }
+        return res;
+    }
 
     //Metodos da praxe    
     public boolean equals(Object produtos){
@@ -102,7 +112,7 @@ public class Produtos
             Iterator <Produto> it = ((Produtos) produtos).produtos.iterator();
             while ((it.hasNext()) && res){
                 Produto p = it.next();
-                res = this.produtos.contains(c);
+                res = this.produtos.contains(p);
             }
             return res;
         }
