@@ -10,26 +10,67 @@ package proj_TransitariosPOO;
 public class ParaServicosSecretos extends Produto
 {
     // instance variables - replace the example below with your own
-    private int x;
+    private final double taxaServicoSimples = 0.8;
+    private final double taxaSegredoEstado = 3;    
+    private final int numCargas = 1;
 
-    /**
-     * Constructor for objects of class ParaServicosSecretos
-     */
-    public ParaServicosSecretos()
+    
+   public ParaServicosSecretos()
     {
-        // initialise instance variables
-        x = 0;
+        super();
     }
+    
+    public ParaServicosSecretos(String nome)
+    {
+        super(nome);
+    }
+    
+    public ParaServicosSecretos(String nome,Cargas cargas)
+    {
+        super(nome,cargas);
+    }    
+    
+    public ParaServicosSecretos(ParaServicosSecretos p)
+    {
+        super(p);
+    }
+    
+    
+    public double getCustoProduto(){
+        return (taxaServicoSimples * taxaSegredoEstado * super.getCustoBase());
+    }
+    
+    public boolean addCarga(Carga c){
+        Cargas cargas;
+        if (!(c instanceof iCargaToxica))
+            return false;
+        else{
+            cargas = super.getCargas();
+            if (cargas.getCargas().size() >= numCargas)
+                return false;
+            else
+                return super.addCarga(c);
+            }
+    }      
+    
 
-    /**
-     * An example of a method - replace this comment with your own
-     * 
-     * @param  y   a sample parameter for a method
-     * @return     the sum of x and y 
+    /*
+     * Métodos da praxe
      */
-    public int sampleMethod(int y)
-    {
-        // put your code here
-        return x + y;
+    public ParaServicosSecretos clone(){return new ParaServicosSecretos(this);}
+    
+    public boolean equals(Object o) {
+        if (this == o) {
+            return true;
+        }
+        if (o == null || o.getClass() != this.getClass()) {
+            return false;
+        }
+            return super.equals(o);
     }
+    
+    public String toString()
+    {
+        return super.toString();
+    } 
 }

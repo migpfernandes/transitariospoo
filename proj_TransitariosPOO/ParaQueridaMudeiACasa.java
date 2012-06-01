@@ -10,26 +10,65 @@ package proj_TransitariosPOO;
 public class ParaQueridaMudeiACasa extends Produto
 {
     // instance variables - replace the example below with your own
-    private final double desconto = 0.1;
+    private final double taxaServicoSimples = 0.9;
     private final int numCargas = 10;
 
     
-    /**
-     * Constructor for objects of class ParaQueridaMudeiACasa
-     */
-    public ParaQueridaMudeiACasa()
+   public ParaQueridaMudeiACasa()
     {
-        // initialise instance variables
-        x = 0;
+        super();
     }
+    
+    public ParaQueridaMudeiACasa(String nome)
+    {
+        super(nome);
+    }
+    
+    public ParaQueridaMudeiACasa(String nome,Cargas cargas)
+    {
+        super(nome,cargas);
+    }    
+    
+    public ParaQueridaMudeiACasa(ParaQueridaMudeiACasa p)
+    {
+        super(p);
+    }
+    
+    public double getCustoProduto(){
+        return (taxaServicoSimples * super.getCustoBase());
+    }
+    
+    public boolean addCarga(Carga c){
+        Cargas cargas;
+        if (!(c instanceof iCargaIndiferenciada))
+            return false;
+        else{
+            cargas = super.getCargas();
+            if (cargas.getCargas().size() >= numCargas)
+                return false;
+            else
+                return super.addCarga(c);
+            }
+    }    
+    
 
-    /**
-     * An example of a method - replace this comment with your own
-     * 
-     * @param  y   a sample parameter for a method
-     * @return     the sum of x and y 
+    /*
+     * Métodos da praxe
      */
-    public getCustoCamiao(){
-        
+    public ParaQueridaMudeiACasa clone(){return new ParaQueridaMudeiACasa(this);}
+    
+    public boolean equals(Object o) {
+        if (this == o) {
+            return true;
+        }
+        if (o == null || o.getClass() != this.getClass()) {
+            return false;
+        }
+            return super.equals(o);
     }
+    
+    public String toString()
+    {
+        return super.toString();
+    } 
 }

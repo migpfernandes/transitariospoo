@@ -53,6 +53,12 @@ public class TransitariosPooSistema implements Serializable
     public String getNome(){return this.nomeEmpresa;}    
     
     /*
+     * Clientes
+     */
+    
+    
+    
+    /*
      * Metodos de leitura e escrita da base de dados
      */
     public  void saveDB() {

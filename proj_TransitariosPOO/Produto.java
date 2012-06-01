@@ -48,7 +48,9 @@ public abstract class Produto
     
     public void setNome(String nome){this.nome = nome;}
     
-    public abstract boolean addCarga(Carga c);
+    public boolean addCarga(Carga c){
+        return (this.cargas.addCarga(c));
+    }
     
     public Cargas getCargas(){
         return new Cargas(this.cargas);
@@ -61,7 +63,7 @@ public abstract class Produto
         double taxaRefrigeracao;
         double precoBaseVeiculo;
         
-        if (
+        
         
         
         return res;
