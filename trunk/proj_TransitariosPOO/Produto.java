@@ -56,6 +56,17 @@ public abstract class Produto
     
     public abstract double getCustoProduto();
     
+    public final double getCustoBase(){
+        double res = 0;
+        double taxaRefrigeracao;
+        double precoBaseVeiculo;
+        
+        if (
+        
+        
+        return res;
+    }
+    
     /*
      * Métodos da praxe
      */

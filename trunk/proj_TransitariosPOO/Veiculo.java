@@ -20,7 +20,15 @@ public abstract class Veiculo
     private TreeSet <Carga> cargas;
     
     
-    private final double TAXAPARTIDA = 60;
+    private static double TAXAPARTIDA = 60;
+    
+    public static void setTaxaPartida(double TxPartida){
+        TAXAPARTIDA = TxPartida;
+    }
+    
+    public static double setTaxaPartida(){
+        return TAXAPARTIDA;
+    }
 
     public Veiculo(){
         this.marca ="";
@@ -98,7 +106,10 @@ public abstract class Veiculo
         double pesoDisponivel = this.espacoDisponivel();
         boolean perecivel = false;
         boolean toxica = false;
-        
+
+        if (this.emViagem)
+            return false;
+        else{
         for (Carga c : cargas){
             pesoCargas += c.getPeso();
             if (c instanceof iCargaPerecivel)
@@ -119,6 +130,7 @@ public abstract class Veiculo
                 this.setVeiculoEmViagem();
             return true;    
         }
+    }
     }
     
     public double espacoDisponivel(){

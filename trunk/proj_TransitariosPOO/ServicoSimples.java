@@ -7,7 +7,7 @@ package proj_TransitariosPOO;
  * @author (your name) 
  * @version (a version number or a date)
  */
-public class ServicoSimples extends Produto
+public class ServicoSimples extends Produto implements iCargaIndiferenciada
 {
 
     public ServicoSimples()
