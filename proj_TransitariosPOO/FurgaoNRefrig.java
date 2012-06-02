@@ -17,8 +17,13 @@ public class FurgaoNRefrig extends Furgao
      */
     public FurgaoNRefrig()
     {
-        // initialise instance variables
+        super();
     }
+    
+    public FurgaoNRefrig(String marca,String modelo,String matricula,String combustivel,
+    double capacidade,double precoKm){
+        super(marca,modelo,matricula,combustivel,capacidade,precoKm);
+    }    
     
     public FurgaoNRefrig(FurgaoNRefrig f){
         super(f);

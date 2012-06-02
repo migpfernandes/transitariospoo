@@ -2,6 +2,7 @@ package proj_TransitariosPOO;
 import java.util.ArrayList;
 import java.util.Iterator;
 import java.util.TreeSet;
+import java.io.Serializable;
 
 /**
  * Write a description of class Cliente here.
@@ -9,7 +10,7 @@ import java.util.TreeSet;
  * @author (your name) 
  * @version (a version number or a date)
  */
-public abstract class Cliente
+public abstract class Cliente implements Comparable <Cliente>,Serializable
 {
     // instance variables - replace the example below with your own
     private String nome;
@@ -105,5 +106,9 @@ public abstract class Cliente
     }
         
         
-    public abstract Cliente clone();            
+    public abstract Cliente clone();     
+    
+    public int compareTo(Cliente c) {
+        return (this.nome.compareToIgnoreCase(c.getNome())) ;
+    }
 }

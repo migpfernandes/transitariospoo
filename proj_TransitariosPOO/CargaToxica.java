@@ -15,6 +15,10 @@ public class CargaToxica extends Carga implements iCargaToxica
         super();
     }
     
+    public CargaToxica(String codigo, double peso, String descricao, double tempoCarregamento) {
+        super(codigo,peso,descricao,tempoCarregamento);
+    }    
+    
     public CargaToxica(CargaToxica c)
     {
         super(c);

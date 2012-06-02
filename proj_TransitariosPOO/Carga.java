@@ -1,13 +1,13 @@
 package proj_TransitariosPOO;
 
-
+import java.io.Serializable;
 /**
  * Write a description of class Carga here.
  * 
  * @author (your name) 
  * @version (a version number or a date)
  */
-public abstract class Carga
+public abstract class Carga implements Comparable <Carga>,Serializable
 {
     // instance variables - replace the example below with your own
 
@@ -158,5 +158,9 @@ public abstract class Carga
         s.append("Descricao: ").append(descricao).append("\n");
         s.append("TempoCarregamento: ").append(tempoCarregamento).append("\n");
         return s.toString();
+    }
+    
+    public int compareTo(Carga c){
+        return this.codigo.compareTo(c.getCodigo());
     }
 }

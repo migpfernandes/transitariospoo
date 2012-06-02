@@ -14,6 +14,10 @@ public CargaIndiferenciada()
         super();
     }
     
+    public CargaIndiferenciada(String codigo, double peso, String descricao, double tempoCarregamento) {
+        super(codigo,peso,descricao,tempoCarregamento);
+    }    
+    
     public CargaIndiferenciada(CargaIndiferenciada c)
     {
         super(c);

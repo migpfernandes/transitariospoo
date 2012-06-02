@@ -3,13 +3,14 @@ package proj_TransitariosPOO;
 import java.util.TreeSet;
 import java.util.Iterator;
 import java.util.Collection;
+import java.io.Serializable;
 /**
  * Abstract class Veiculo - write a description of the class here
  * 
  * @author Miguel Fernandes
  * @version 2012/05/15
  */
-public abstract class Veiculo
+public abstract class Veiculo implements Comparable<Veiculo>,Serializable
 {
     // instance variables - replace the example below with your own
     private String marca;
@@ -193,6 +194,10 @@ public abstract class Veiculo
             return (this.matricula.equals(v.getMatricula()));            
         }
 
+    }
+    
+    public int compareTo(Veiculo o) {
+        return (this.matricula.compareTo(o.getMatricula())) ;
     }
     
 }

@@ -3,6 +3,7 @@ package proj_TransitariosPOO;
 import java.util.TreeSet;
 import java.util.Iterator;
 import java.util.Comparator;
+import java.io.Serializable;
 
 /**
  * Write a description of class Clientes here.
@@ -10,7 +11,7 @@ import java.util.Comparator;
  * @author (your name) 
  * @version (a version number or a date)
  */
-public class Clientes
+public class Clientes implements Serializable
 {
     // instance variables - replace the example below with your own
     private TreeSet <Cliente> clientes;
@@ -90,7 +91,7 @@ public class Clientes
         Iterator <Cliente> it = getClientes(new ClienteCompareNome());
         while (it.hasNext()){
             Cliente c = it.next();
-            sb.append(c.toString());
+            sb.append(c.toString()).append("\n");
         }
         return sb.toString();
     }
@@ -100,7 +101,7 @@ public class Clientes
         Iterator <Cliente> it = getClientes(new ClienteCompareContrato());
         while (it.hasNext()){
             Cliente c = it.next();
-            sb.append(c.toString());
+            sb.append(c.toString()).append("\n");
         }
         return sb.toString();
     }    

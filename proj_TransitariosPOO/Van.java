@@ -18,8 +18,7 @@ public class Van extends Veiculo implements iRefrigeravel
        super();
     }
     
-    public Van(String marca,String modelo,String matricula,char combustivel,
-    double capacidade,double precoKm){
+    public Van(String marca,String modelo,String matricula,double capacidade,double precoKm){
                         super(marca,modelo,matricula,capacidade,precoKm);
     }
     

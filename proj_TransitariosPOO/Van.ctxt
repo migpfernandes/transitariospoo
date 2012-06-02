@@ -2,8 +2,8 @@
 comment0.params=
 comment0.target=Van()
 comment0.text=\n\ Constructor\ for\ objects\ of\ class\ Vans\n
-comment1.params=marca\ modelo\ matricula\ combustivel\ capacidade\ precoKm
-comment1.target=Van(java.lang.String,\ java.lang.String,\ java.lang.String,\ char,\ double,\ double)
+comment1.params=marca\ modelo\ matricula\ capacidade\ precoKm
+comment1.target=Van(java.lang.String,\ java.lang.String,\ java.lang.String,\ double,\ double)
 comment2.params=van
 comment2.target=Van(Van)
 comment3.params=

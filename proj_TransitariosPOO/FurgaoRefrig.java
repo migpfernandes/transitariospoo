@@ -15,10 +15,13 @@ public class FurgaoRefrig extends Furgao implements iRefrigeravel
      */
     public FurgaoRefrig()
     {
-        // initialise instance variables
-
-        
+        super();   
     }
+    
+    public FurgaoRefrig(String marca,String modelo,String matricula,String combustivel,
+    double capacidade,double precoKm){
+        super(marca,modelo,matricula,combustivel,capacidade,precoKm);
+    }     
     
     public FurgaoRefrig(FurgaoRefrig f){
         super(f);

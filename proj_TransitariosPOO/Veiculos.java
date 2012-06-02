@@ -4,6 +4,7 @@ import java.util.TreeMap;
 import java.util.TreeSet;
 import java.util.Iterator;
 import java.util.Comparator;
+import java.io.Serializable;
 
 /**
  * Write a description of class Veiculos here.
@@ -11,7 +12,7 @@ import java.util.Comparator;
  * @author (your name) 
  * @version (a version number or a date)
  */
-public class Veiculos
+public class Veiculos implements Serializable
 {
     // instance variables - replace the example below with your own
     private TreeMap <String,Veiculo> veiculos;
@@ -215,7 +216,7 @@ public class Veiculos
     
     public String ListaVeiculosPorEstado(){
         Iterator <Veiculo> it;
-        StringBuilder sb = new StringBuilder("LISTA VEICULOS POR ESTADO");
+        StringBuilder sb = new StringBuilder("LISTA VEICULOS POR ESTADO\n");
        
         sb.append(this.ListaVeiculosEmViagem());
         sb.append(this.ListaVeiculosEmTerraComCarga());
