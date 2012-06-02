@@ -2,6 +2,7 @@ package proj_TransitariosPOO;
 
 import java.util.TreeSet;
 import java.util.Iterator;
+import java.util.Collection;
 /**
  * Abstract class Veiculo - write a description of the class here
  * 
@@ -17,7 +18,7 @@ public abstract class Veiculo
     private double capacidade;
     private double precoKm;
     private boolean emViagem;
-    private TreeSet <Carga> cargas;
+    private Produtos produtos;
     
     
     private static double TAXAPARTIDA = 60;
@@ -37,7 +38,7 @@ public abstract class Veiculo
         this.capacidade = 0;
         this.precoKm = 0;
         this.emViagem = false;
-        this.cargas = new TreeSet <Carga>();
+        this.produtos = new Produtos();
     }
     
     public Veiculo(String marca,String modelo,String matricula,
@@ -47,8 +48,8 @@ public abstract class Veiculo
         this.matricula=matricula;
         this.capacidade = capacidade;
         this.precoKm = precoKm;
-        this.emViagem = false;        
-        this.cargas = new TreeSet <Carga>();        
+        this.emViagem = false;      
+        this.produtos = new Produtos();             
     }
     
     
@@ -58,14 +59,8 @@ public abstract class Veiculo
         this.matricula=veiculo.getMatricula();
         this.capacidade = veiculo.getCapacidade();
         this.precoKm = veiculo.getPrecoKm();
-        this.emViagem = false;        
-        this.cargas = new TreeSet <Carga>();   
-        
-        Iterator <Carga> it = veiculo.getCargas();
-        while(it.hasNext()){
-            Carga c = it.next();
-            this.cargas.add(c.clone());
-        }
+        this.emViagem = false;
+        this.produtos = new Produtos(veiculo.getProdutos());
     }
     
     
@@ -77,6 +72,7 @@ public abstract class Veiculo
     public String getMatricula(){return this.matricula;}
     public double getCapacidade(){return this.capacidade;}    
     public double getPrecoKm(){return this.precoKm;} 
+    public boolean getEmViagem(){return this.emViagem;} 
 
 
     /**
@@ -92,21 +88,32 @@ public abstract class Veiculo
     /*
      * Métodos relativos à manipulação de cargas
      */
+    /*
     public Iterator <Carga> getCargas(){
         TreeSet <Carga> res = new TreeSet <Carga>();
         for (Carga c : this.cargas)
             res.add(c.clone());
         
         return res.iterator();
+    }*/
+    
+    public Produtos getProdutos(){
+        return (this.produtos.clone());
     }
     
+    public Iterator<Produto> getProdutosIterator(){
+        return (this.produtos.getProdutos());
+    }    
     
-    public boolean addCargas(TreeSet <Carga> cargas){
+    
+    public boolean addProduto(Produto produto){
         double pesoCargas = 0;
         double pesoDisponivel = this.espacoDisponivel();
         boolean perecivel = false;
         boolean toxica = false;
 
+        Collection <Carga> cargas = produto.getCargas().getCargas().values();
+        
         if (this.emViagem)
             return false;
         else{
@@ -124,8 +131,7 @@ public abstract class Veiculo
         else if (toxica && (this instanceof iRefrigeravel))
             return false;
         else{
-            for (Carga c : cargas)
-                this.cargas.add(c.clone());
+            this.produtos.addProduto(produto.clone());
             if (this.Ocupacao() >= TAXAPARTIDA)
                 this.setVeiculoEmViagem();
             return true;    
@@ -133,20 +139,18 @@ public abstract class Veiculo
     }
     }
     
+    public double espacoUtilizado(){
+        return this.produtos.getPesoTotal();
+        
+    }    
+    
     public double espacoDisponivel(){
-        double capUtilizada = 0;
-        for (Carga c : this.cargas)
-            capUtilizada += c.getPeso();
-        return (this.capacidade - capUtilizada);
+        return (this.capacidade - this.espacoUtilizado());
         
     }
     
     public double Ocupacao(){
-        double capUtilizada = 0;
-        for (Carga c : this.cargas)
-            capUtilizada += c.getPeso();
-        return ((this.capacidade - capUtilizada) * 100 / this.capacidade);
-        
+        return ((this.capacidade - this.espacoUtilizado()) * 100 / this.capacidade);
     }    
     
     //Partida e chegada de veiculos
@@ -158,7 +162,7 @@ public abstract class Veiculo
         if (!this.emViagem)
             return false;
         else{
-            this.cargas = new TreeSet <Carga>();
+            this.produtos = new Produtos();
             this.emViagem = false;
             return true;
         }

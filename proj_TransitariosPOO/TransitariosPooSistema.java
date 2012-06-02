@@ -55,8 +55,61 @@ public class TransitariosPooSistema implements Serializable
     /*
      * Clientes
      */
+    public boolean addCliente(Cliente c){
+        return (this.clientes.addCliente(c));
+    }
     
+    public boolean removeCliente(Cliente c){
+        return (this.clientes.removeCliente(c));
+    }
     
+    public Clientes getClientes(){
+        return this.clientes.clone();
+    }
+    
+    public String ListaClientesNome(){
+        return this.clientes.ListaClientePorNome();
+    }
+    
+    public String ListaClientePorValorSubcontratado(){
+        return this.clientes.ListaClientePorValorSubcontratado();
+    }
+    
+    /*
+     * Veículos
+     */
+    public boolean addVeiculo(Veiculo v){
+        return (this.veiculos.addVeiculo(v));
+    }
+    
+    public boolean removeVeiculo(Veiculo v){
+        return (this.veiculos.removeVeiculo(v));
+    }    
+    
+    public Veiculos getVeiculos(){
+        return this.veiculos.clone();
+    }
+    
+    public String ListaVeiculosCarga(){
+        return this.veiculos.ListaVeiculosPorCarga();
+    }
+ 
+    public String ListaVeiculosPorEstado(){
+        return this.veiculos.ListaVeiculosPorEstado();
+    }
+    
+    public boolean addProduto(Produto p, String numContribuinte){
+        Cliente c = this.clientes.getClientePorNumContribuinte(numContribuinte);
+        if (c == null)
+            return false;
+        else if (this.veiculos.addProduto(p.clone())){
+            this.clientes.removeCliente(c);
+            c.addProduto(p.clone());
+            this.clientes.addCliente(c);
+            return true;
+        } else
+            return false;
+    }
     
     /*
      * Metodos de leitura e escrita da base de dados
@@ -104,15 +157,15 @@ public class TransitariosPooSistema implements Serializable
         return new TransitariosPooSistema(this);
     }
     
-    public boolean equals(Object tspoo){
-         if (this == tspoo)
+    public boolean equals(Object o){
+         if (this == o)
             return true;
             
-        if ((tspoo == null) || (this.getClass() != tspoo.getClass()))
+        if ((o == null) || (this.getClass() != o.getClass()))
             return false;
         else{
-            TransitariosPooSistema t = (TransitariosPooSistema) tspoo;
-            return (this.clientes.equals(tspoo.getClientes()) && (this.veiculos.equals(tspoo.getVeiculos())
+            TransitariosPooSistema tspoo = (TransitariosPooSistema) o;
+            return (this.clientes.equals(tspoo.getClientes()) && (this.veiculos.equals(tspoo.getVeiculos())));
         }
     }  
     

@@ -2,6 +2,7 @@ package proj_TransitariosPOO;
 
 import java.util.TreeSet;
 import java.util.Iterator;
+import java.util.Comparator;
 
 /**
  * Write a description of class Clientes here.
@@ -32,7 +33,7 @@ public class Clientes
             Cliente c = it.next();
             this.clientes.add(c.clone());
         }
-    }
+    }  
 
     /**
      * An example of a method - replace this comment with your own
@@ -46,9 +47,15 @@ public class Clientes
         for(Cliente c : this.clientes)
             res.add(c.clone());
         return res.iterator();
-    }
+    } 
     
-  
+    public Iterator <Cliente> getClientes(Comparator <Cliente> comp)
+    {
+        TreeSet <Cliente> res = new TreeSet <Cliente>(comp);
+        for(Cliente c : this.clientes)
+            res.add(c.clone());
+        return res.iterator();
+    }     
     
     public boolean addCliente(Cliente c){
         if (this.clientes.contains(c))
@@ -69,7 +76,7 @@ public class Clientes
     }    
     
     public boolean removeCliente(String nome){
-        Cliente c = this.getCliente(nome);
+        Cliente c = this.getClientePorNome(nome);
         if (c == null)
             return false;
         else{
@@ -78,10 +85,30 @@ public class Clientes
         }
     }
     
+    public String ListaClientePorNome(){
+        StringBuilder sb = new StringBuilder("CLIENTES: \n");
+        Iterator <Cliente> it = getClientes(new ClienteCompareNome());
+        while (it.hasNext()){
+            Cliente c = it.next();
+            sb.append(c.toString());
+        }
+        return sb.toString();
+    }
+    
+    public String ListaClientePorValorSubcontratado(){
+        StringBuilder sb = new StringBuilder("CLIENTES: \n");
+        Iterator <Cliente> it = getClientes(new ClienteCompareContrato());
+        while (it.hasNext()){
+            Cliente c = it.next();
+            sb.append(c.toString());
+        }
+        return sb.toString();
+    }    
+    
     /*
      * Métodos de procura
      */
-    public Cliente getCliente(String nome)
+    public Cliente getClientePorNome(String nome)
     {
         Cliente res = null;
         Iterator <Cliente> it = this.clientes.iterator();
@@ -92,6 +119,18 @@ public class Clientes
             }        
         return res;
     } 
+    
+    public Cliente getClientePorNumContribuinte(String numContribuinte)
+    {
+        Cliente res = null;
+        Iterator <Cliente> it = this.clientes.iterator();
+        while ((it.hasNext()) && (res == null)){
+            Cliente c = it.next();
+            if (c.getNumContribuinte().equals(numContribuinte))
+                res = c.clone();
+            }        
+        return res;
+    }     
 
     //Metodos da praxe    
     public boolean equals(Object clientes){
