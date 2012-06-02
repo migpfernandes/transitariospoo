@@ -99,6 +99,15 @@ public class Produtos
         }
         return res;
     }
+    
+    public double getPesoTotal(){
+        double res = 0;
+        Iterator <Produto> it = this.getProdutos();
+        while (it.hasNext()){
+            res += ((Produto) it.next()).getPesoSubcontratado();
+        }
+        return res;
+    }    
 
     //Metodos da praxe    
     public boolean equals(Object produtos){

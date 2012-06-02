@@ -52,6 +52,10 @@ public abstract class Produto
         return (this.cargas.addCarga(c));
     }
     
+    public double getPesoSubcontratado(){
+        return this.cargas.getPesoTotalCarga();
+    }
+    
     public Cargas getCargas(){
         return new Cargas(this.cargas);
     }

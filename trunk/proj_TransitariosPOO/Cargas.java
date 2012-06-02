@@ -59,6 +59,15 @@ public class Cargas
             return null;
     }
     
+    public double getPesoTotalCarga(){
+        double res = 0;
+        Iterator <Carga> it = this.getCargasIterator();
+        while (it.hasNext()){
+            res += ((Carga) it.next()).getPeso();
+        }
+        return res;
+    }
+    
     //Metodos da praxe    
     public boolean equals(Object cargas){
          if (this == cargas)

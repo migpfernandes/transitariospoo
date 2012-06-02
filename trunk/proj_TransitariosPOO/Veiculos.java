@@ -3,6 +3,8 @@ package proj_TransitariosPOO;
 import java.util.TreeMap;
 import java.util.TreeSet;
 import java.util.Iterator;
+import java.util.Comparator;
+
 /**
  * Write a description of class Veiculos here.
  * 
@@ -48,6 +50,25 @@ public class Veiculos
         return res.iterator();
     }
     
+    /*
+     * Métodos de procura
+     */
+    public Veiculo getVeiculo(String matricula)
+    {
+        if (this.veiculos.containsKey(matricula)){
+            return this.veiculos.get(matricula).clone();
+        }
+        return null;
+    }
+    
+    public Iterator <Veiculo> getVeiculos(Comparator <Veiculo> comp)
+    {
+        TreeSet <Veiculo> res = new TreeSet <Veiculo>(comp);
+        for(Veiculo v : this.veiculos.values())
+            res.add(v.clone());
+        return res.iterator();
+    }    
+    
     public Iterator <Veiculo> getVans()
     {
         TreeSet <Veiculo> res = new TreeSet <Veiculo>();
@@ -84,6 +105,42 @@ public class Veiculos
         return res.iterator();
     }     
     
+    public Iterator <Veiculo> getVeiculosEmViagem()
+    {
+        TreeSet <Veiculo> res = new TreeSet <Veiculo>();
+        for(Veiculo v : this.veiculos.values())
+            if (v.getEmViagem())
+                res.add(v.clone());
+        return res.iterator();
+    }    
+    
+    public Iterator <Veiculo> getVeiculosEmTerraSemCarga()
+    {
+        TreeSet <Veiculo> res = new TreeSet <Veiculo>();
+        for(Veiculo v : this.veiculos.values())
+            if (!v.getEmViagem() && (!v.getProdutosIterator().hasNext()))
+                res.add(v.clone());
+        return res.iterator();
+    }  
+    
+    public Iterator <Veiculo> getVeiculosEmTerraComCarga()
+    {
+        TreeSet <Veiculo> res = new TreeSet <Veiculo>();
+        for(Veiculo v : this.veiculos.values())
+            if (!v.getEmViagem() && (v.getProdutosIterator().hasNext()))
+                res.add(v.clone());
+        return res.iterator();
+    }     
+    
+    public Iterator <Veiculo> getVeiculosEmTerra()
+    {
+        TreeSet <Veiculo> res = new TreeSet <Veiculo>();
+        for(Veiculo v : this.veiculos.values())
+            if (!v.getEmViagem())
+                res.add(v.clone());
+        return res.iterator();
+    }     
+    
     public boolean addVeiculo(Veiculo v){
         if (this.veiculos.containsKey(v.getMatricula()))
             return false;
@@ -111,17 +168,70 @@ public class Veiculos
         }
     }
     
-    
-    /*
-     * Métodos de procura
-     */
-    public Veiculo getVeiculo(String matricula)
-    {
-        if (this.veiculos.containsKey(matricula)){
-            return this.veiculos.get(matricula).clone();
+    public String ListaVeiculosPorCarga(){
+        StringBuilder sb = new StringBuilder();
+        sb.append("VEICULOS:\n");
+        Iterator <Veiculo> it = this.getVeiculos(new VeiculoCompareCarga());
+        while(it.hasNext()){
+            Veiculo v = it.next();
+            sb.append(v.toString());
         }
-        return null;
+        return sb.toString();
+    }   
+    
+    public String ListaVeiculosEmViagem(){
+        StringBuilder sb = new StringBuilder();
+        sb.append("VEICULOS EM VIAGEM: \n");
+        Iterator <Veiculo> it = this.getVeiculosEmViagem();
+        while(it.hasNext()){
+            Veiculo v = it.next();
+            sb.append(v.toString());
+        }
+        return sb.toString();
     }
+
+    public String ListaVeiculosEmTerraComCarga(){
+        StringBuilder sb = new StringBuilder();
+        sb.append("VEICULOS EM TERRA COM CARGA: \n");
+        Iterator <Veiculo> it = this.getVeiculosEmTerraComCarga();
+        while(it.hasNext()){
+            Veiculo v = it.next();
+            sb.append(v.toString());
+        }
+        return sb.toString();
+    }     
+        
+    public String ListaVeiculosEmTerraSemCarga(){
+        StringBuilder sb = new StringBuilder();
+        sb.append("VEICULOS EM TERRA SEM CARGA: \n");
+        Iterator <Veiculo> it = this.getVeiculosEmTerraSemCarga();
+        while(it.hasNext()){
+            Veiculo v = it.next();
+            sb.append(v.toString());
+        }
+        return sb.toString();
+    }    
+    
+    
+    public String ListaVeiculosPorEstado(){
+        Iterator <Veiculo> it;
+        StringBuilder sb = new StringBuilder("LISTA VEICULOS POR ESTADO");
+       
+        sb.append(this.ListaVeiculosEmViagem());
+        sb.append(this.ListaVeiculosEmTerraComCarga());
+        sb.append(this.ListaVeiculosEmTerraSemCarga());
+       
+        return sb.toString();
+    }       
+    
+    public boolean addProduto(Produto p){
+        boolean res = false;
+        Iterator <Veiculo> it = this.getVeiculosEmTerra();
+        while ((it.hasNext()) && (!res)){
+            res = ((Veiculo) it.next()).addProduto(p.clone());
+        }
+        return res;
+    }  
 
 
     //Metodos da praxe    
@@ -150,6 +260,16 @@ public class Veiculos
         StringBuilder sb = new StringBuilder();
         sb.append("VEICULOS:\n");
         Iterator <Veiculo> it = this.getVeiculos();
+        while(it.hasNext()){
+            Veiculo v = it.next();
+            sb.append(v.toString());
+        }
+        return sb.toString();
+    }
+    
+    public String toString(Iterator <Veiculo> it){
+        StringBuilder sb = new StringBuilder();
+        sb.append("VEICULOS:\n");
         while(it.hasNext()){
             Veiculo v = it.next();
             sb.append(v.toString());
