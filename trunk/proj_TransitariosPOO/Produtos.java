@@ -2,13 +2,14 @@ package proj_TransitariosPOO;
 
 import java.util.TreeSet;
 import java.util.Iterator;
+import java.io.Serializable;
 /**
  * Write a description of class Produtos here.
  * 
  * @author (your name) 
  * @version (a version number or a date)
  */
-public class Produtos
+public class Produtos implements Serializable
 {
     // instance variables - replace the example below with your own
     private TreeSet <Produto> produtos;

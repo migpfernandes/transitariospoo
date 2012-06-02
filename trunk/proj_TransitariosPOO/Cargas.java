@@ -3,13 +3,15 @@ package proj_TransitariosPOO;
 import java.util.HashMap;
 import java.util.Iterator;
 import java.util.TreeSet;
+import java.io.Serializable;
+
 /**
  * Write a description of class Cargas here.
  * 
  * @author (your name) 
  * @version (a version number or a date)
  */
-public class Cargas
+public class Cargas implements Serializable
 {
     // instance variables - replace the example below with your own
     private HashMap<String,Carga> cargas;

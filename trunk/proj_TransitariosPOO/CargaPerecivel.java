@@ -15,6 +15,10 @@ public class CargaPerecivel extends Carga implements iCargaPerecivel
         super();
     }
     
+    public CargaPerecivel(String codigo, double peso, String descricao, double tempoCarregamento) {
+        super(codigo,peso,descricao,tempoCarregamento);
+    }       
+    
     public CargaPerecivel(CargaPerecivel c)
     {
         super(c);

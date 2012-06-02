@@ -36,6 +36,12 @@ public class TransitariosPooSistema implements Serializable
         this.clientes = new Clientes();
         this.veiculos = new Veiculos();        
     }    
+    
+    public TransitariosPooSistema(String nomeEmpresa){
+        this.nomeEmpresa = nomeEmpresa;
+        this.clientes = new Clientes();
+        this.veiculos = new Veiculos();        
+    }        
 
     public TransitariosPooSistema(String nome,Clientes clientes,Veiculos veiculos){
         this.nomeEmpresa = nome;
@@ -128,9 +134,9 @@ public class TransitariosPooSistema implements Serializable
     }
     
     
-    public TransitariosPooSistema loadDB(String filename) {
+    public TransitariosPooSistema loadDB() {
         try {
-            FileInputStream fich = new FileInputStream(filename);
+            FileInputStream fich = new FileInputStream(ficheiroBD);
             ObjectInputStream ficheiro = new ObjectInputStream(fich);
 
             TransitariosPooSistema tp = (TransitariosPooSistema) ficheiro.readObject();

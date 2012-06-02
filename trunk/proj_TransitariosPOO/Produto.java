@@ -1,19 +1,21 @@
 package proj_TransitariosPOO;
 
-
+import java.io.Serializable;
 /**
  * Write a description of class ProdutosComerciais here.
  * 
  * @author (your name) 
  * @version (a version number or a date)
  */
-public abstract class Produto
+public abstract class Produto implements Comparable <Produto>,Serializable
 {
     // instance variables - replace the example below with your own
-    private final double PBVan = 12;
-    private final double PBFurgao = 12;
-    private final double PBCamiao = 12;
-
+    private final double PBCatg1 = 12.34;
+    private final double PBCatg2 = 11.2;
+    private final double PBCatg3 = 10.5;
+    private final double PBCatg4 = 10;
+  
+   
     private String nome;
     private Cargas cargas;
     
@@ -63,14 +65,26 @@ public abstract class Produto
     public abstract double getCustoProduto();
     
     public final double getCustoBase(){
-        double res = 0;
-        double taxaRefrigeracao;
-        double precoBaseVeiculo;
+        
+        //Categoria - Descrição --> PB/Kg
+        //catg1 - até 100kg --> 12.34
+        //catg2 - de 100 kg a 500 --> 11.2        
+        //catg3 - de 500 kg a 1000 --> 10.5        
+        //catg4 - a partir de 1000 --> 10          
+        
+        double pb;
+        double pesoCarga = this.cargas.getPesoTotalCarga();
+        if (pesoCarga <= 100)
+            pb = PBCatg1;
+        else if ((pesoCarga > 100) && (pesoCarga <= 500))    
+            pb = PBCatg2;
+        else if ((pesoCarga > 500) && (pesoCarga <= 1000))
+            pb = PBCatg3;        
+        else
+            pb = PBCatg4;            
         
         
-        
-        
-        return res;
+        return pb * pesoCarga;
     }
     
     /*
@@ -97,7 +111,13 @@ public abstract class Produto
     {
         StringBuilder sb = new StringBuilder("Produto:\n");
         sb.append("Nome: ").append(this.getNome()).append("\n");
+        sb.append("TotalCarga: ").append(this.getPesoSubcontratado()).append("\n");
+        sb.append("Custo: ").append(this.getCustoProduto()).append("\n");        
         
         return sb.toString();
     }
+    
+    public int compareTo(Produto c){
+        return this.nome.compareTo(c.getNome());
+    }    
 }
