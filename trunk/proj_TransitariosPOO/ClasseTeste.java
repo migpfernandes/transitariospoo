@@ -18,7 +18,7 @@ public class ClasseTeste
         geraClientes();
         geraProdutos();
         
-        System.out.print(this.emp.ListaVeiculosPorEstado());                
+        //System.out.print(this.emp.ListaVeiculosPorEstado());            
         System.out.print(this.emp.ListaClientesNome());
         System.out.print(this.emp.ListaClientePorValorSubcontratado());
         
